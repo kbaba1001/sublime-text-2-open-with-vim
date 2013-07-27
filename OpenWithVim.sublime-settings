@@ -1,0 +1,5 @@
+{
+  "open_with_vim_terminal": "terminator",
+  "open_with_vim_terminal_option": "--command",
+  "open_with_vim_path": "/usr/bin/vim"
+}
