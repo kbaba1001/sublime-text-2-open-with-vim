@@ -19,4 +19,5 @@ class OpenWithVimCommand(sublime_plugin.WindowCommand):
             sublime.error_message(__name__ + ": No file to open.")
             return
 
-        os.system('terminator --command "vim +' + str(line_num) + ' ' + path + '"')
+        # os.system('terminator --command "vim +' + str(line_num) + ' ' + path + '"')
+        os.system('geany -l ' + str(line_num) + ' ' + path)
