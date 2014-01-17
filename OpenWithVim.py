@@ -1,7 +1,6 @@
 import sublime
 import sublime_plugin
-import subprocess
-
+import os
 
 class OpenWithVimCommand(sublime_plugin.WindowCommand):
 
@@ -11,9 +10,7 @@ class OpenWithVimCommand(sublime_plugin.WindowCommand):
         return row
 
     def run(self):
-        terminal = "gnome-terminal"
-        option = "--command"
-        vim = "/usr/bin/vim"
+        line_num = self.current_line(self.window.active_view())
         path = None
 
         if self.window.active_view():
@@ -22,7 +19,4 @@ class OpenWithVimCommand(sublime_plugin.WindowCommand):
             sublime.error_message(__name__ + ": No file to open.")
             return
 
-        line_num = self.current_line(self.window.active_view())
-
-        command = [terminal, option, vim + ' +' + str(line_num) + ' ' + path]
-        subprocess.Popen(command)
+        os.system('terminator --command "vim +' + str(line_num) + ' ' + path + '"')
